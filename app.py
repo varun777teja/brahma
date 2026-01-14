@@ -117,13 +117,13 @@ st.markdown("""
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "provider" not in st.session_state:
-    st.session_state.provider = "Ollama"
+    st.session_state.provider = "Google Gemini"  # Default to Gemini for cloud deployment
 if "api_key" not in st.session_state:
-    # Try to load from environment variable (for cloud deployment)
-    st.session_state.api_key = os.getenv("GOOGLE_API_KEY", "")
+    # Try to load from environment variable, fallback to hardcoded key
+    st.session_state.api_key = os.getenv("GOOGLE_API_KEY", "AIzaSyC7SnUQsVjGF_h3O0tJhDI6HTvQM0kH7jY")
 # Ensure engine is always initialized
 if "engine" not in st.session_state:
-    st.session_state.engine = RAGEngine(provider="Ollama")
+    st.session_state.engine = RAGEngine(provider=st.session_state.provider, api_key=st.session_state.api_key)
     st.session_state.indexed = st.session_state.engine.get_existing_vector_store()
 
 # Encode logo for rotating effect
