@@ -3,3 +3,4 @@ __pycache__/
 .vector_db/
 .env
 .DS_Store
+.streamlit_secrets_template.toml

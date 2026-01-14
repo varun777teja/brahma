@@ -119,7 +119,8 @@ if "messages" not in st.session_state:
 if "provider" not in st.session_state:
     st.session_state.provider = "Ollama"
 if "api_key" not in st.session_state:
-    st.session_state.api_key = "" # Default to empty for now
+    # Try to load from environment variable (for cloud deployment)
+    st.session_state.api_key = os.getenv("GOOGLE_API_KEY", "")
 # Ensure engine is always initialized
 if "engine" not in st.session_state:
     st.session_state.engine = RAGEngine(provider="Ollama")
