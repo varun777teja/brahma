@@ -1,0 +1,10 @@
+streamlit
+langchain
+langchain-community
+chromadb
+pypdf
+sentence-transformers
+ollama
+pydantic==2.10.0
+langchain-google-genai
+fastembed
